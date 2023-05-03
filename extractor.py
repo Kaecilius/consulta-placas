@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 
 
 def main():
+    apikey = os.getenv("apikey") # apikey for anticaptcha
     driver = webdriver.Chrome(ChromeDriverManager().install())
     url = "https://www.sunarp.gob.pe/consulta-vehicular.html"
 
@@ -19,7 +20,7 @@ def main():
 
     solver = recaptchaV2Proxyless()
     solver.set_verbose(1)
-    solver.set_key("cbe6049823564cb15f149126315f47d4")
+    solver.set_key(apikey)
     solver.set_website_url(url)
     solver.set_website_key(sitekey_clean)
     
