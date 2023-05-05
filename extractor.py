@@ -9,6 +9,7 @@ from selenium.common.exceptions import NoSuchElementException
 import io, base64
 from PIL import Image
 import uuid
+import pandas as pd
 
 def main():
 
@@ -26,7 +27,8 @@ def main():
     sleep(1)
 
     # list of placas : TEST !
-    placas = ["ABC123", "ABC321"] 
+    df_placas = pd.read_csv("input/muestra_placa_rv.txt")
+    placas = df_placas.loc[:200, "PLACA"].to_list()
 
     for placa in placas:
         print(placa)
